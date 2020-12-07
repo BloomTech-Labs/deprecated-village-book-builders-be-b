@@ -1,0 +1,28 @@
+{
+  "library": [
+    {
+      "id": 0,
+      "name": "Library Name 0",
+      "description": "This is a test description",
+      "library_usage": "This tells you about the usage of the library",
+      "notes": "Notes about the library",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 1,
+      "name": "Library Name 1",
+      "description": "This is a test description",
+      "library_usage": "This tells you about the usage of the library",
+      "notes": "Notes about the library",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Library Name 2",
+      "description": "This is a test description",
+      "library_usage": "This tells you about the usage of the library",
+      "notes": "Notes about the library",
+      "image": "https://via.placeholder.com/150"
+    }
+  ]
+}

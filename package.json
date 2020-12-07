@@ -1,0 +1,15 @@
+{
+  "name": "mockdb",
+  "version": "1.0.0",
+  "description": "Mock API Data for Labs 29 VBB",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server db.json --routes routes.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Mulford",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}
