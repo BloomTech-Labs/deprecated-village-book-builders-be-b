@@ -1,3 +1,6 @@
 {
-  
+  "/admin/library": "/library",
+  "/admin/library/:id": "/library/:id",
+  "/headmaster/village": "/headmaster",
+  "/headmaster/village/:id": "/headmaster/:id"
 }
