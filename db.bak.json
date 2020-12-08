@@ -1,0 +1,63 @@
+{
+  "library": [
+    {
+      "id": 0,
+      "name": "Library Name 0",
+      "description": "This is a test description",
+      "library_usage": "This tells you about the usage of the library",
+      "notes": "Notes about the library",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 1,
+      "name": "Library Name 1",
+      "description": "This is a test description",
+      "library_usage": "This tells you about the usage of the library",
+      "notes": "Notes about the library",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Library Name 2",
+      "description": "This is a test description",
+      "library_usage": "This tells you about the usage of the library",
+      "notes": "Notes about the library",
+      "image": "https://via.placeholder.com/150"
+    }
+  ],
+  "headmaster": [
+    {
+      "id": 0,
+      "GPS_coordinates": [2131231.233, 348593845.34234],
+      "images_drive_folder_link": "https://drive.google.com/drive",
+      "village_contact_name": "Jon Doe",
+      "village_contact_phone": 123456789,
+      "education_contact": {
+        "name": "Ed Contact",
+        "phone": 245678546,
+        "email": "email@contact.com"
+      },
+      "notes": "These are notes for this"
+    },
+    {
+      "id": 1,
+      "GPS_coordinates": [2131231.233, 348593845.34234],
+      "images_drive_folder_link": "https://drive.google.com/drive",
+      "village_contact_name": "Jon Doe",
+      "village_contact_phone": 123456789,
+      "education_contact": {
+        "name": "Ed Contact",
+        "phone": 245678546,
+        "email": "email@contact.com"
+      },
+      "notes": "These are notes for this"
+    }
+  ],
+  "auth": [
+    {
+      "id": 0,
+      "username": "test",
+      "password": "test"
+    }
+  ]
+}
