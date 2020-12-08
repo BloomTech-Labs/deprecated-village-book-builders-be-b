@@ -1,12 +1,13 @@
 # API Basics
 
 > Please note due to json-server, ALL HTTP verbs are supported at this time. Refer to https://www.notion.so/VBB-Designing-API-Contract-Endpoints-eca9722b1fdb4552915f9f0999ba802a for API specifications/contracts
-
+---
 ## Routes
 
 **Base Url**: http://54.158.134.245/api
 
-**Library**(s): /admin/library
+**Library**(s): /admin/library  
+*Get all libraries*
 
 > sample response to GET request
 
@@ -20,6 +21,10 @@
 "image": "https://via.placeholder.com/150"
 }
 ```
+**Library**(s): /admin/library/:libraryId  
+*Get One library*  
+  
+---  
 
 **Headmaster (all villages)**: /headmaster/village 
 *this route is for testing so we can see how many villages are currently in the db*  
