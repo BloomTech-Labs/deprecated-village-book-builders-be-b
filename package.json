@@ -4,8 +4,9 @@
   "description": "Mock API Data for Labs 29 VBB",
   "main": "index.js",
   "scripts": {
-    "start": "json-server db.json --routes routes.json --port $PORT",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "forever start server.js"
   },
   "author": "Matthew Mulford",
   "license": "MIT",
