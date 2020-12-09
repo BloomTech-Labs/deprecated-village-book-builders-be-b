@@ -53,6 +53,94 @@
       "notes": "These are notes for this"
     }
   ],
+  "students": [
+    [
+      {
+        "id": 1,
+        "firstName": "Giovanna",
+        "lastName": "Southcombe",
+        "studentEmail": "gsouthcombe0@bbc.co.uk",
+        "primaryLanguage": "Armenian",
+        "dob": "1/25/2020",
+        "englishProficiency": 7,
+        "schoolLevel": 5,
+        "readingLevel": 11,
+        "mathLevel": 4,
+        "parentName": "Giovanna Southcombe",
+        "parentEmail": "gsouthcombe0@irs.gov"
+      },
+      {
+        "id": 2,
+        "firstName": "Margaux",
+        "lastName": "Beyer",
+        "studentEmail": "mbeyer1@sun.com",
+        "primaryLanguage": "Tok Pisin",
+        "dob": "7/1/2020",
+        "englishProficiency": 8,
+        "schoolLevel": 1,
+        "readingLevel": 2,
+        "mathLevel": 12,
+        "parentName": "Margaux Beyer",
+        "parentEmail": "mbeyer1@uiuc.edu"
+      },
+      {
+        "id": 3,
+        "firstName": "Ulick",
+        "lastName": "Koopman",
+        "studentEmail": "ukoopman2@shareasale.com",
+        "primaryLanguage": "Papiamento",
+        "dob": "1/15/2020",
+        "englishProficiency": 6,
+        "schoolLevel": 7,
+        "readingLevel": 5,
+        "mathLevel": 3,
+        "parentName": "Ulick Koopman",
+        "parentEmail": "ukoopman2@godaddy.com"
+      },
+      {
+        "id": 4,
+        "firstName": "Quinn",
+        "lastName": "Gibbeson",
+        "studentEmail": "qgibbeson3@nymag.com",
+        "primaryLanguage": "Tsonga",
+        "dob": "10/11/2020",
+        "englishProficiency": 7,
+        "schoolLevel": 8,
+        "readingLevel": 4,
+        "mathLevel": 3,
+        "parentName": "Quinn Gibbeson",
+        "parentEmail": "qgibbeson3@yale.edu"
+      },
+      {
+        "id": 5,
+        "firstName": "Lenora",
+        "lastName": "Hutley",
+        "studentEmail": "lhutley4@usda.gov",
+        "primaryLanguage": "Korean",
+        "dob": "10/7/2020",
+        "englishProficiency": 8,
+        "schoolLevel": 10,
+        "readingLevel": 13,
+        "mathLevel": 13,
+        "parentName": "Lenora Hutley",
+        "parentEmail": "lhutley4@adobe.com"
+      },
+      {
+        "id": 6,
+        "firstName": "Marguerite",
+        "lastName": "Cullington",
+        "studentEmail": "mcullington5@xing.com",
+        "primaryLanguage": "Sotho",
+        "dob": "7/31/2020",
+        "englishProficiency": 11,
+        "schoolLevel": 8,
+        "readingLevel": 5,
+        "mathLevel": 6,
+        "parentName": "Marguerite Cullington",
+        "parentEmail": "mcullington5@symantec.com"
+      }
+    ]
+  ],
   "auth": [
     {
       "id": 0,
