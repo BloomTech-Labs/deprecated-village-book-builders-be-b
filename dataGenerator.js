@@ -1,3 +1,4 @@
+const { fake, hacker } = require("faker");
 const faker = require("faker");
 const jsonfile = require("jsonfile");
 
@@ -10,6 +11,15 @@ const NUMOFLIBS = 30;
 const NUMOFHEADS = NUMOFLIBS * 2;
 let NUMOFSTUDENTS = 0;
 const genders = ["Male", "Female", "Not Disclosed"];
+const apps = [
+  "phone",
+  "email",
+  "whattsapp",
+  "wechat",
+  "duo",
+  "facebook",
+  "twitter",
+];
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -109,13 +119,33 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
     primary_language: faker.random.locale(),
     dob: faker.date.past(15, "1999-07-09"),
     students_picture: faker.image.imageUrl(),
-    education_contact: {
-      name: faker.name.findName(),
-      phone: faker.phone.phoneNumberFormat(2),
-      email: faker.internet.email(),
-      jobTitle: faker.name.jobTitle(),
+    english_lvl: faker.random.number(10),
+    math_lvl: fake.random.number(13),
+    reading_lvl: fake.random.number(13),
+    school_lvl: fake.random.number(13),
+    academic_description: fake.random.words(20),
+    support_needed: fake.random.words(35),
+    availability: {
+      time_zone: faker.address.timeZone(),
+      as_early_as: faker.fake("{{random.number(24)}}:00"),
+      as_late_as: faker.fake("{{random.number(24)}}:00"),
+      methods: [
+        apps[faker.random.number(apps.length)],
+        apps[faker.random.number(apps.length)],
+        apps[faker.random.number(apps.length)],
+      ],
     },
-    notes: faker.random.words(50),
+    dynamic_questions: [
+      { "My favorite thing to do in my free time is": faker.hacker.phrase() },
+      { "When I grow up, I want to be": faker.hacker.phrase() },
+      { "Goals & Dreams Notes": faker.hacker.phrase() },
+      { "Personal Struggles Notes": faker.hacker.phrase() },
+      { "Other interests/hobbies": faker.hacker.phrase() },
+      { "Skills Notes": faker.hacker.phrase() },
+      { "Family Notes": faker.hacker.phrase() },
+      { "Other Notes": faker.hacker.phrase() },
+      { "Admin Notes": faker.hacker.phrase() },
+    ],
   };
 
   data.student.push(fakeStudent);
