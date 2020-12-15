@@ -1,7 +1,7 @@
 const faker = require("faker");
 const jsonfile = require("jsonfile");
 
-const file = "./test.json";
+const file = "./db.json";
 
 let data = jsonfile.readFileSync(file);
 data = {};
@@ -49,7 +49,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 data.school = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
-  let schoolStudents = faker.random.number(NUMOFHEADS * 4) + NUMOFHEADS * 2;
+  let schoolStudents = faker.random.number(NUMOFHEADS * 3);
   NUMOFSTUDENTS += schoolStudents;
   let fakeSchool = {
     id: index,
