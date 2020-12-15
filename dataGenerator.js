@@ -1,10 +1,8 @@
-const { fake, hacker } = require("faker");
 const faker = require("faker");
 const jsonfile = require("jsonfile");
 
 const file = "./db.json";
 const LANGUAGES = require("./language.js");
-// console.log(LANGUAGES);
 let data = jsonfile.readFileSync(file);
 data = {};
 
@@ -188,8 +186,21 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
   data.library[randomVillage].headmasterId.push(index);
 }
 
-//students
+//Users-----------------------------------------------------
 
+const fakeUsers = [
+  { id: 0, user: "admin1", password: "password", role: "admin" },
+  { id: 2, user: "admin2", password: "password", role: "admin" },
+  { id: 3, user: "admin3", password: "password", role: "admin" },
+  { id: 4, user: "headmaster1", password: "password", role: "admin" },
+  { id: 5, user: "headmaster2", password: "password", role: "admin" },
+  { id: 6, user: "headmaster3", password: "password", role: "admin" },
+  { id: 7, user: "headmaster4", password: "password", role: "admin" },
+  { id: 8, user: "student1", password: "password", role: "admin" },
+  { id: 9, user: "student2", password: "password", role: "admin" },
+  { id: 10, user: "student3", password: "password", role: "admin" },
+];
+data.user = fakeUsers;
 //Debbuging print statements-----------------------------------------------------
 // console.log(data.library, "\n\n\n\n\n\n\n\n\n\n\n");
 // console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
