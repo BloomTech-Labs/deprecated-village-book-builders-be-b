@@ -56,8 +56,8 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   let fakeSchool = {
     id: index,
     name: faker.company.companyName(),
-    num_students: faker.random.number(schoolStudents),
-    num_teachers: faker.random.number(NUMOFHEADS) + 4,
+    count_students_currently_enrolled: faker.random.number(schoolStudents),
+    count_teachers: faker.random.number(NUMOFHEADS) + 4,
     school_description: faker.random.words(30),
     school_needs: faker.random.words(30),
     school_goals: faker.random.words(30),
