@@ -189,16 +189,51 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //Users-----------------------------------------------------
 
 const fakeUsers = [
-  { id: 0, user: "admin1", password: "password", role: "admin" },
-  { id: 2, user: "admin2", password: "password", role: "admin" },
-  { id: 3, user: "admin3", password: "password", role: "admin" },
-  { id: 4, user: "headmaster1", password: "password", role: "admin" },
-  { id: 5, user: "headmaster2", password: "password", role: "admin" },
-  { id: 6, user: "headmaster3", password: "password", role: "admin" },
-  { id: 7, user: "headmaster4", password: "password", role: "admin" },
-  { id: 8, user: "student1", password: "password", role: "admin" },
-  { id: 9, user: "student2", password: "password", role: "admin" },
-  { id: 10, user: "student3", password: "password", role: "admin" },
+  { id: 0, email: faker.internet.email(), password: "password", role: "admin" },
+  { id: 2, email: faker.internet.email(), password: "password", role: "admin" },
+  { id: 3, email: faker.internet.email(), password: "password", role: "admin" },
+  {
+    id: 4,
+    email: faker.internet.email(),
+    password: "password",
+    role: "headmaster",
+  },
+  {
+    id: 5,
+    email: faker.internet.email(),
+    password: "password",
+    role: "headmaster",
+  },
+  {
+    id: 6,
+    email: faker.internet.email(),
+    password: "password",
+    role: "headmaster",
+  },
+  {
+    id: 7,
+    email: faker.internet.email(),
+    password: "password",
+    role: "headmaster",
+  },
+  {
+    id: 8,
+    email: faker.internet.email(),
+    password: "password",
+    role: "student",
+  },
+  {
+    id: 9,
+    email: faker.internet.email(),
+    password: "password",
+    role: "student",
+  },
+  {
+    id: 10,
+    email: faker.internet.email(),
+    password: "password",
+    role: "student",
+  },
 ];
 data.user = fakeUsers;
 //Debbuging print statements-----------------------------------------------------
