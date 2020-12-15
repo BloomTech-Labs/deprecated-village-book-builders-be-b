@@ -4,13 +4,18 @@
   "description": "Mock API Data for Labs 29 VBB",
   "main": "index.js",
   "scripts": {
-    "start": "json-server --watch db.json --routes routes.json",
+    "start": "json-server-relationship --watch db.json --routes routes.json",
+    "genData": "node dataGenerator.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "forever start server.js"
   },
   "author": "Matthew Mulford",
   "license": "MIT",
   "dependencies": {
-    "json-server": "^0.16.3"
+    "faker": "5.1.0",
+    "json-server-relationship": "0.14.5"
+  },
+  "devDependencies": {
+    "jsonfile": "6.1.0"
   }
 }
