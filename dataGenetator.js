@@ -51,8 +51,7 @@ console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
 data.school = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
-  //   let schoolStudents = faker.random.number(NUMOFHEADS * 3, NUMOFHEADS * 25);
-  let schoolStudents = faker.random.number(NUMOFHEADS * 15) + NUMOFHEADS * 3;
+  let schoolStudents = faker.random.number(NUMOFHEADS * 6) + NUMOFHEADS * 3;
   NUMOFSTUDENTS += schoolStudents;
   let fakeSchool = {
     id: index,
@@ -62,15 +61,22 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     school_description: faker.random.words(30),
     school_needs: faker.random.words(30),
     school_goals: faker.random.words(30),
+    dynamic_questions: [],
+    notes: faker.random.words(30),
   };
 
-  //   for (let x = 0; x < 3; x++) {
-  //       fakeSchool.dynamic_questions.push({`${faker.hacker.phrase()}`: faker.hacker.phrase()})
-  //   }
-
+  for (let x = 0; x < 3; x++) {
+    fakeSchool.dynamic_questions.push({
+      [`${faker.hacker.phrase()}`]: faker.random.words(20),
+    });
+  }
   data.school.push(fakeSchool);
 }
-console.log(data.school, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(
+  data.school,
+  data.school[0].dynamic_questions,
+  "\n\n\n\n\n\n\n\n\n\n\n"
+);
 
 //Headmasters
 data.headmaster = [];
