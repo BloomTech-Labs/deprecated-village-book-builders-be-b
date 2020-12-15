@@ -9,8 +9,9 @@ data = {};
 const NUMOFLIBS = 1;
 const NUMOFHEADS = NUMOFLIBS * 3;
 let NUMOFSTUDENTS = 0;
+const genders = ["Male", "Female", "Not Disclosed"];
 
-//Librarys
+//Librarys-----------------------------------------------------
 data.library = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
@@ -26,9 +27,8 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 
   data.library.push(fakeLib);
 }
-console.log(data.library, "\n\n\n\n\n\n\n\n\n\n\n");
 
-//Villages
+//Villages-----------------------------------------------------
 data.village = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
@@ -45,9 +45,8 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 
   data.village.push(fakeVillage);
 }
-console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
 
-//Schools
+//Schools-----------------------------------------------------
 data.school = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
@@ -72,45 +71,15 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   }
   data.school.push(fakeSchool);
 }
-console.log(
-  data.school,
-  data.school[0].dynamic_questions,
-  "\n\n\n\n\n\n\n\n\n\n\n"
-);
 
-//Headmasters
+//Headmasters-----------------------------------------------------
 data.headmaster = [];
 for (let index = 0; index < NUMOFHEADS; index++) {
   //Generate data
   let fakeHeadmaster = {
     id: index,
-    name: faker.name.findName(),
-    gender: faker.name.gender(),
-    address: faker.address.streetAddress(),
-    GPS_coordinates: faker.address.nearbyGPSCoordinate(),
-    images_drive_folder_link: faker.internet.url(),
-    headmasters_picture: faker.image.imageUrl(),
-    education_contact: {
-      name: faker.name.findName(),
-      phone: faker.phone.phoneNumberFormat(2),
-      email: faker.internet.email(),
-      jobTitle: faker.name.jobTitle(),
-    },
-    notes: faker.random.words(50),
-  };
-
-  data.headmaster.push(fakeHeadmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-}
-
-//Students
-data.headmaster = [];
-for (let index = 0; index < NUMOFSTUDENTS; index++) {
-  //Generate data
-  let randomVillage = faker.random.number(NUMOFLIBS - 1);
-  let genders = ["Male", "Female"];
-  let fakeHeadmaster = {
-    id: index,
-    name: faker.name.findName(),
+    first_Name: faker.name.firstName(),
+    last_Name: faker.name.lastName(),
     gender: genders[faker.random.number(genders.length - 1)],
     address: faker.address.streetAddress(),
     GPS_coordinates: faker.address.nearbyGPSCoordinate(),
@@ -124,8 +93,100 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
     },
     notes: faker.random.words(50),
   };
-
-  data.headmaster.push(fakeHeadmaster);
 }
+
+//Students-----------------------------------------------------
+data.students = [];
+for (let index = 0; index < NUMOFSTUDENTS; index++) {
+  //Generate data
+  let fakeStudents = {
+    id: index,
+    first_Name: faker.name.firstName(),
+    last_Name: faker.name.lastName(),
+    gender: genders[faker.random.number(genders.length - 1)],
+    address: faker.address.streetAddress(),
+    GPS_coordinates: faker.address.nearbyGPSCoordinate(),
+    images_drive_folder_link: faker.internet.url(),
+    studentss_picture: faker.image.imageUrl(),
+    education_contact: {
+      name: faker.name.findName(),
+      phone: faker.phone.phoneNumberFormat(2),
+      email: faker.internet.email(),
+      jobTitle: faker.name.jobTitle(),
+    },
+    notes: faker.random.words(50),
+  };
+
+  data.students.push(fakeStudents);
+}
+
+//Releationships-----------------------------------------------------
+
+//Village - Schools - Librarys
+for (let index = 0; index < NUMOFLIBS; index++) {
+  //library
+  data.library[index].villageId = index;
+  data.library[index].schoolId = index;
+  //school
+  data.school[index].villageId = index;
+  data.school[index].libraryId = index;
+  //village
+  data.village[index].schoolId = index;
+  data.village[index].libraryId = index;
+}
+
+//headmasters
+for (let index = 0; index < NUMOFLIBS; index++) {
+  //headmaster
+  data.headmaster[index].villageId = index;
+  data.headmaster[index].schoolId = index;
+  data.headmaster[index].libraryId = index;
+  //Village - Schools - Librarys
+  data.school[index].libraryId = index;
+  data.village[index].schoolId = index;
+  data.library[index].libraryId = index;
+}
+
+for (let index = NUMOFLIBS - 1; index < data.headmaster.length; index++) {
+  let randomVillage = faker.random.number(NUMOFLIBS) - 1;
+  //headmaster
+  data.headmaster[index].libraryId = randomVillage;
+  //Village - Schools - Librarys
+  data.school[randomVillage].libraryId = index;
+  data.village[randomVillage].schoolId = index;
+  data.library[randomVillage].libraryId = index;
+}
+
+//students
+for (let index = 0; index < NUMOFHEADS; index++) {
+  //headmaster
+  data.students[index].villageId = index;
+  data.students[index].schoolId = index;
+  data.students[index].libraryId = index;
+  //Village - Schools - Librarys
+  data.school[index].libraryId = index;
+  data.village[index].schoolId = index;
+  data.library[index].libraryId = index;
+}
+
+for (let index = NUMOFLIBS - 1; index < data.headmaster.length; index++) {
+  let randomVillage = faker.random.number(NUMOFLIBS) - 1;
+  //headmaster
+  data.headmaster[index].libraryId = randomVillage;
+  //Village - Schools - Librarys
+  data.school[randomVillage].libraryId = index;
+  data.village[randomVillage].schoolId = index;
+  data.library[randomVillage].libraryId = index;
+}
+
+//Debbuging print statements-----------------------------------------------------
+console.log(data.library, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(
+  data.school,
+  data.school[0].dynamic_questions,
+  "\n\n\n\n\n\n\n\n\n\n\n"
+);
 console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(data.students, "\n\n\n\n\n\n\n\n\n\n\n");
 jsonfile.writeFileSync(file, data);
