@@ -28,7 +28,10 @@
   "headmaster": [
     {
       "id": 0,
-      "GPS_coordinates": [2131231.233, 348593845.34234],
+      "GPS_coordinates": [
+        2131231.233,
+        348593845.34234
+      ],
       "images_drive_folder_link": "https://drive.google.com/drive",
       "village_contact_name": "Jon Doe",
       "village_contact_phone": 123456789,
@@ -41,7 +44,10 @@
     },
     {
       "id": 1,
-      "GPS_coordinates": [2131231.233, 348593845.34234],
+      "GPS_coordinates": [
+        2131231.233,
+        348593845.34234
+      ],
       "images_drive_folder_link": "https://drive.google.com/drive",
       "village_contact_name": "Jon Doe",
       "village_contact_phone": 123456789,
@@ -51,13 +57,6 @@
         "email": "email@contact.com"
       },
       "notes": "These are notes for this"
-    }
-  ],
-  "village": [
-    {
-      "id": 0,
-      "name": "Singapur",
-      "libraryId": 0
     }
   ],
   "auth": [
