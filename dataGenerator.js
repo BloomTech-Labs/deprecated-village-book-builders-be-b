@@ -90,7 +90,7 @@ for (let index = 0; index < NUMOFHEADS; index++) {
     id: index,
     first_Name: faker.name.firstName(),
     last_Name: faker.name.lastName(),
-    gender: genders[faker.random.number(genders.length - 1)],
+    gender: faker.random.arrayElement(genders),
     address: faker.address.streetAddress(),
     GPS_coordinates: faker.address.nearbyGPSCoordinate(),
     images_drive_folder_link: faker.internet.url(),
@@ -129,10 +129,7 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
       time_zone: faker.address.timeZone(),
       as_early_as: faker.fake("{{random.number(24)}}:00"),
       as_late_as: faker.fake("{{random.number(24)}}:00"),
-      methods: [
-        apps[faker.random.number(apps.length)],
-        apps[faker.random.number(apps.length)],
-      ],
+      methods: faker.random.arrayElements(apps, 3),
     },
     dynamic_questions: [
       { "My favorite thing to do in my free time is": faker.hacker.phrase() },
@@ -200,6 +197,6 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //   data.school[0].dynamic_questions,
 //   "\n\n\n\n\n\n\n\n\n\n\n"
 // );
-// console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(data.student, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.student[0].availability.methods, "\n\n\n\n\n\n\n\n\n\n\n");
 jsonfile.writeFileSync(file, data);
