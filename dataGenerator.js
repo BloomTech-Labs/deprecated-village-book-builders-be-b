@@ -211,4 +211,5 @@ data.user = fakeUsers;
 // );
 // console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
 // console.log(data.student[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(data.user);
 jsonfile.writeFileSync(file, data);

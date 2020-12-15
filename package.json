@@ -13,9 +13,9 @@
   "license": "MIT",
   "dependencies": {
     "faker": "5.1.0",
-    "json-server-relationship": "0.14.5"
+    "json-server-relationship": "0.14.5",
+    "jsonfile": "6.1.0",
+    "jsonwebtoken": "8.5.1"
   },
-  "devDependencies": {
-    "jsonfile": "6.1.0"
-  }
+  "devDependencies": {}
 }
