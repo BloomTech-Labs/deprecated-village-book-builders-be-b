@@ -6,8 +6,8 @@ const file = "./db.json";
 let data = jsonfile.readFileSync(file);
 data = {};
 
-const NUMOFLIBS = 1;
-const NUMOFHEADS = NUMOFLIBS * 3;
+const NUMOFLIBS = 30;
+const NUMOFHEADS = NUMOFLIBS * 2;
 let NUMOFSTUDENTS = 0;
 const genders = ["Male", "Female", "Not Disclosed"];
 
@@ -49,7 +49,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 data.school = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
-  let schoolStudents = faker.random.number(NUMOFHEADS * 3);
+  let schoolStudents = faker.random.number(NUMOFHEADS * 2);
   NUMOFSTUDENTS += schoolStudents;
   let fakeSchool = {
     id: index,
@@ -107,7 +107,7 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
     gender: genders[faker.random.number(genders.length - 1)],
     email: faker.internet.email(),
     primary_language: faker.random.locale(),
-    dob: faker.date.past(),
+    dob: faker.date.past(15, "1999-07-09"),
     students_picture: faker.image.imageUrl(),
     education_contact: {
       name: faker.name.findName(),
@@ -164,13 +164,13 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //students
 
 //Debbuging print statements-----------------------------------------------------
-console.log(data.library, "\n\n\n\n\n\n\n\n\n\n\n");
-console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
-console.log(
-  data.school,
-  data.school[0].dynamic_questions,
-  "\n\n\n\n\n\n\n\n\n\n\n"
-);
-console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-console.log(data.student, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.library, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(
+//   data.school,
+//   data.school[0].dynamic_questions,
+//   "\n\n\n\n\n\n\n\n\n\n\n"
+// );
+// console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.student, "\n\n\n\n\n\n\n\n\n\n\n");
 jsonfile.writeFileSync(file, data);
