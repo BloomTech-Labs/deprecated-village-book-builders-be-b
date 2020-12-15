@@ -132,7 +132,6 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
       methods: [
         apps[faker.random.number(apps.length)],
         apps[faker.random.number(apps.length)],
-        apps[faker.random.number(apps.length)],
       ],
     },
     dynamic_questions: [
