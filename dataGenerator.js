@@ -199,5 +199,5 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //   "\n\n\n\n\n\n\n\n\n\n\n"
 // );
 // console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-console.log(data.student[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.student[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
 jsonfile.writeFileSync(file, data);
