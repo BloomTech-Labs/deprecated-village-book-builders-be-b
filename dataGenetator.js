@@ -51,7 +51,7 @@ console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
 data.school = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
-  let schoolStudents = faker.random.number(NUMOFHEADS * 6) + NUMOFHEADS * 3;
+  let schoolStudents = faker.random.number(NUMOFHEADS * 4) + NUMOFHEADS * 2;
   NUMOFSTUDENTS += schoolStudents;
   let fakeSchool = {
     id: index,
@@ -102,31 +102,30 @@ for (let index = 0; index < NUMOFHEADS; index++) {
   data.headmaster.push(fakeHeadmaster, "\n\n\n\n\n\n\n\n\n\n\n");
 }
 
-// //Students
-// data.headmaster = [];
-// for (let index = 0; index < NUMOFLIBS * 5; index++) {
-//   //Generate data
-//   let randomVillage = faker.random.number(NUMOFLIBS);
-//   let fakeHeadmaster = {
-//     id: index,
-//     name: faker.name.findName(),
-//     gender: faker.name.gender(),
-//     address: faker.address.streetAddress(),
-//     GPS_coordinates: faker.address.nearbyGPSCoordinate(),
-//     images_drive_folder_link: faker.internet.url(),
-//     headmasters_picture: faker.image.imageUrl(),
-//     education_contact: {
-//       name: faker.name.findName(),
-//       phone: faker.phone.phoneNumberFormat(2),
-//       email: faker.internet.email(),
-//       jobTitle: faker.name.jobTitle(),
-//     },
-//     notes: faker.random.words(50),
-//     libraryId: randomVillage,
-//     villageId: randomVillage,
-//   };
+//Students
+data.headmaster = [];
+for (let index = 0; index < NUMOFSTUDENTS; index++) {
+  //Generate data
+  let randomVillage = faker.random.number(NUMOFLIBS - 1);
+  let genders = ["Male", "Female"];
+  let fakeHeadmaster = {
+    id: index,
+    name: faker.name.findName(),
+    gender: genders[faker.random.number(genders.length - 1)],
+    address: faker.address.streetAddress(),
+    GPS_coordinates: faker.address.nearbyGPSCoordinate(),
+    images_drive_folder_link: faker.internet.url(),
+    headmasters_picture: faker.image.imageUrl(),
+    education_contact: {
+      name: faker.name.findName(),
+      phone: faker.phone.phoneNumberFormat(2),
+      email: faker.internet.email(),
+      jobTitle: faker.name.jobTitle(),
+    },
+    notes: faker.random.words(50),
+  };
 
-//   data.headmaster.push(fakeHeadmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-// }
-
+  data.headmaster.push(fakeHeadmaster);
+}
+console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
 jsonfile.writeFileSync(file, data);
