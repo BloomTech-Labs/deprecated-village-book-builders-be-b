@@ -3,7 +3,8 @@ const faker = require("faker");
 const jsonfile = require("jsonfile");
 
 const file = "./db.json";
-
+const LANGUAGES = require("./language.js");
+// console.log(LANGUAGES);
 let data = jsonfile.readFileSync(file);
 data = {};
 
@@ -116,7 +117,7 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
     last_Name: faker.name.lastName(),
     gender: genders[faker.random.number(genders.length - 1)],
     email: faker.internet.email(),
-    primary_language: faker.random.locale(),
+    primary_language: faker.random.arrayElement(LANGUAGES).name,
     dob: faker.date.past(15, "1999-07-09"),
     students_picture: faker.image.imageUrl(),
     english_lvl: faker.random.number(10),
@@ -197,6 +198,6 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //   data.school[0].dynamic_questions,
 //   "\n\n\n\n\n\n\n\n\n\n\n"
 // );
-console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(data.student[0].availability.methods, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
+console.log(data.student[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
 jsonfile.writeFileSync(file, data);
