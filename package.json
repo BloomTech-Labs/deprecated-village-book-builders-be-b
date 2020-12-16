@@ -4,9 +4,9 @@
   "description": "Mock API Data for Labs 29 VBB",
   "main": "index.js",
   "scripts": {
-    "start": "json-server-relationship --watch db.json --routes routes.json",
+    "start": "node server.js",
     "genData": "node dataGenerator.js",
-    "start-auth": "node server.js",
+    "oldStart": "json-server-relationship --watch db.json --routes routes.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "forever start server.js"
   },
