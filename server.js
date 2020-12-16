@@ -1,19 +1,11 @@
-const jsonServer = require("json-server-relationship");
-const server = jsonServer.create();
-const router = jsonServer.router("db.json");
-const jsonfile = require("jsonfile");
-const SECRET_KEY = "123456789";
-const expiresIn = "1h";
-const bodyParser = require("body-parser");
-
 const fs = require("fs");
 const bodyParser = require("body-parser");
-const jsonServer = require("json-server");
+const jsonServer = require("json-server-relationship");
 const jwt = require("jsonwebtoken");
 
 const server = jsonServer.create();
-const router = jsonServer.router("./database.json");
-const userdb = JSON.parse(fs.readFileSync("./db.json", "UTF-8").user);
+const userdb = JSON.parse(fs.readFileSync("./db.json", "UTF-8"));
+const router = jsonServer.router("./db.json");
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -38,7 +30,7 @@ function verifyToken(token) {
 // Check if the user exists in database
 function isAuthenticated({ email, password }) {
   return (
-    userdb.users.findIndex(
+    userdb.user.findIndex(
       (user) => user.email === email && user.password === password
     ) !== -1
   );
@@ -57,7 +49,7 @@ server.post("/auth/register", (req, res) => {
     return;
   }
 
-  fs.readFile("./users.json", (err, data) => {
+  fs.readFile("./db.json", (err, data) => {
     if (err) {
       const status = 401;
       const message = err;
@@ -65,16 +57,16 @@ server.post("/auth/register", (req, res) => {
       return;
     }
 
-    // Get current users data
-    var data = JSON.parse(data.toString());
+    // Get current user data
+    var data = JSON.parse(data.user.toString());
 
     // Get the id of last user
-    var last_item_id = data.users[data.users.length - 1].id;
+    var last_item_id = data.user[data.user.length - 1].id;
 
     //Add new user
-    data.users.push({ id: last_item_id + 1, email: email, password: password }); //add some data
+    data.user.push({ id: last_item_id + 1, email: email, password: password }); //add some data
     var writeData = fs.writeFile(
-      "./users.json",
+      "./user.json",
       JSON.stringify(data),
       (err, result) => {
         // WRITE
@@ -94,7 +86,7 @@ server.post("/auth/register", (req, res) => {
   res.status(200).json({ access_token });
 });
 
-// Login to one of the users from ./users.json
+// Login to one of the user from ./user.json
 server.post("/auth/login", (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
@@ -106,14 +98,14 @@ server.post("/auth/login", (req, res) => {
     return;
   }
   const access_token = createToken({ email, password });
-  console.log("Access Token:" + access_token);
-  res.status(200).json({ access_token });
+  // console.log("Access Token:" + access_token);
+  res.status(200).json({ access_token, user:  });
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
+  console.log(req.headers.authorization)
   if (
-    req.headers.authorization === undefined ||
-    req.headers.authorization.split(" ")[0] !== "Bearer"
+    req.headers.authorization === undefined 
   ) {
     const status = 401;
     const message = "Error in authorization format";

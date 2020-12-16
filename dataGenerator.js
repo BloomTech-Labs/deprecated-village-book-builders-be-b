@@ -189,7 +189,7 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //Users-----------------------------------------------------
 
 const fakeUsers = [
-  { id: 0, email: faker.internet.email(), password: "password", role: "admin" },
+  { id: 0, email: "bruno@email.com", password: "password", role: "admin" },
   { id: 2, email: faker.internet.email(), password: "password", role: "admin" },
   { id: 3, email: faker.internet.email(), password: "password", role: "admin" },
   {
