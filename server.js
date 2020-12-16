@@ -110,7 +110,7 @@ server.post("/auth/login", (req, res) => {
   }
   const access_token = createToken({ email, password });
   // console.log("Access Token:" + access_token);
-  res.status(200).json({ access_token, user: getUserData({ email, password }) });
+  res.status(200).json({ access_token });
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
