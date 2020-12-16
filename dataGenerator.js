@@ -189,24 +189,24 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 //Users-----------------------------------------------------
 
 const fakeUsers = [
-  { id: 0, email: "bruno@email.com", password: "password", role: "admin" },
-  { id: 2, email: faker.internet.email(), password: "password", role: "admin" },
+  { id: 0, email: "admin@admin.com", password: "password", role: "admin" },
+  { id: 2, email: "bruno@email.com", password: "password", role: "admin" },
   { id: 3, email: faker.internet.email(), password: "password", role: "admin" },
   {
     id: 4,
-    email: faker.internet.email(),
+    email: "headmaster@headmaster.com",
     password: "password",
     role: "headmaster",
   },
   {
     id: 5,
-    email: faker.internet.email(),
+    email: "Javon72@yahoo.com",
     password: "password",
     role: "headmaster",
   },
   {
     id: 6,
-    email: faker.internet.email(),
+    email: "Isadore37@hotmail.com",
     password: "password",
     role: "headmaster",
   },
@@ -218,13 +218,13 @@ const fakeUsers = [
   },
   {
     id: 8,
-    email: faker.internet.email(),
+    email: "student@student.com",
     password: "password",
     role: "student",
   },
   {
     id: 9,
-    email: faker.internet.email(),
+    email: "Isadore37@hotmail.com",
     password: "password",
     role: "student",
   },
