@@ -17,6 +17,7 @@ const expiresIn = "1h";
 
 // Create a token from a payload
 function createToken(payload) {
+  payload = getUserData(payload)
   return jwt.sign(payload, SECRET_KEY, { expiresIn });
 }
 
@@ -33,8 +34,18 @@ function isAuthenticated({ email, password }) {
     userdb.user.findIndex(
       (user) => user.email === email && user.password === password
     ) !== -1
+    
   );
 }
+
+// Retrieve User Id and role to send in JWT
+function getUserData({ email, password }) {
+  const { id, role} = userdb.user[userdb.user.findIndex(
+    (user) => user.email === email && user.password === password
+  )]
+  return { id, role }
+}
+
 
 // Register New User
 server.post("/auth/register", (req, res) => {
@@ -99,7 +110,7 @@ server.post("/auth/login", (req, res) => {
   }
   const access_token = createToken({ email, password });
   // console.log("Access Token:" + access_token);
-  res.status(200).json({ access_token, user:  });
+  res.status(200).json({ access_token, user: getUserData({ email, password }) });
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
