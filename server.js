@@ -115,35 +115,35 @@ server.post("/auth/login", (req, res) => {
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
-  console.log(req.headers.authorization)
-  if (
-    req.headers.authorization === undefined 
-  ) {
-    const status = 401;
-    const message = "Error in authorization format";
-    res.status(status).json({ status, message });
-    return;
-  }
-  try {
-    let verifyTokenResult;
-    verifyTokenResult = verifyToken(req.headers.authorization.split(" ")[1]);
-
-    if (verifyTokenResult instanceof Error) {
+    console.log(req.headers.authorization)
+    if (req.headers.authorization === undefined
+    ) {
       const status = 401;
-      const message = "Access token not provided";
-      res.status(status).json({ status, message });
+      const message = "Error in authorization format";
+      res.status(status).json({ status, message, headers: req.headers });
       return;
     }
-    next();
-  } catch (err) {
-    const status = 401;
-    const message = "Error access_token is revoked";
-    res.status(status).json({ status, message });
-  }
-});
+    try {
+      let verifyTokenResult;
+      console.log(req.headers.authorization);
+      verifyTokenResult = verifyToken(req.headers.authorization);
+  
+      if (verifyTokenResult instanceof Error) {
+        const status = 401;
+        const message = "Access token not provided";
+        res.status(status).json({ status, message, token: req.headers.authorization });
+        return;
+      }
+      next();
+    } catch (err) {
+      const status = 401;
+      const message = "Error access_token is revoked";
+      res.status(status).json({ status, message });
+    }
+  });
 
 server.use(router);
 
 
 
-server.listen(port, () => console.log(`\n** Running on port ${port} **\n`));
+server.listen(port, () => console.log(`\n** Running on port ${port} **\t http://localhost:3000/\n`));
