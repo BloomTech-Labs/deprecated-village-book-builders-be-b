@@ -1,3 +1,4 @@
+const port = process.env.PORT || 3000;
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server-relationship");
@@ -143,6 +144,6 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
 
 server.use(router);
 
-server.listen(3000, () => {
-  console.log("Run Auth API Server");
-});
+
+
+server.listen(port, () => console.log(`\n** Running on port ${port} **\n`));
