@@ -8,7 +8,7 @@ data = {};
 
 const NUMOFLIBS = 30;
 const NUMOFHEADS = NUMOFLIBS * 2;
-let NUMOFSTUDENTS = 0;
+let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Not Disclosed"];
 const apps = [
   "phone",
@@ -58,12 +58,12 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 data.school = [];
 for (let index = 0; index < NUMOFLIBS; index++) {
   //Generate data
-  let schoolStudents = faker.random.number(NUMOFHEADS * 2);
-  NUMOFSTUDENTS += schoolStudents;
+  let schoolmenteess = faker.random.number(NUMOFHEADS * 2);
+  NUMOFMENTEES += schoolmenteess;
   let fakeSchool = {
     id: index,
     name: faker.company.companyName(),
-    count_students_currently_enrolled: faker.random.number(schoolStudents),
+    count_menteess_currently_enrolled: faker.random.number(schoolmenteess),
     count_teachers: faker.random.number(NUMOFHEADS) + 4,
     school_description: faker.random.words(30),
     school_needs: faker.random.words(30),
@@ -105,11 +105,11 @@ for (let index = 0; index < NUMOFHEADS; index++) {
   data.headmaster.push(fakeHeadmaster);
 }
 
-//Students-----------------------------------------------------
-data.student = [];
-for (let index = 0; index < NUMOFSTUDENTS; index++) {
+//menteess-----------------------------------------------------
+data.mentees = [];
+for (let index = 0; index < NUMOFMENTEES; index++) {
   //Generate data
-  let fakeStudent = {
+  let fakeMentees = {
     id: index,
     first_Name: faker.name.firstName(),
     last_Name: faker.name.lastName(),
@@ -117,7 +117,7 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
     email: faker.internet.email(),
     primary_language: faker.random.arrayElement(LANGUAGES).name,
     dob: faker.date.past(15, "1999-07-09"),
-    students_picture: faker.image.imageUrl(),
+    menteess_picture: faker.image.imageUrl(),
     english_lvl: faker.random.number(10),
     math_lvl: faker.random.number(13),
     reading_lvl: faker.random.number(13),
@@ -143,7 +143,7 @@ for (let index = 0; index < NUMOFSTUDENTS; index++) {
     ],
   };
 
-  data.student.push(fakeStudent);
+  data.mentees.push(fakeMentees);
 }
 
 //Releationships-----------------------------------------------------
@@ -200,7 +200,7 @@ const fakeUsers = [
   },
   {
     id: 5,
-    email: "Javon72@yahoo.com",
+    email: "varun@vbb.com",
     password: "password",
     role: "headmaster",
   },
@@ -218,21 +218,21 @@ const fakeUsers = [
   },
   {
     id: 8,
-    email: "student@student.com",
+    email: "mentees@mentees.com",
     password: "password",
-    role: "student",
+    role: "mentees",
   },
   {
     id: 9,
-    email: "Isadore37@hotmail.com",
+    email: "varun@vbb.com",
     password: "password",
-    role: "student",
+    role: "mentees",
   },
   {
     id: 10,
     email: faker.internet.email(),
     password: "password",
-    role: "student",
+    role: "mentees",
   },
 ];
 data.user = fakeUsers;
@@ -245,6 +245,6 @@ data.user = fakeUsers;
 //   "\n\n\n\n\n\n\n\n\n\n\n"
 // );
 // console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(data.student[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
+// console.log(data.mentees[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
 console.log(data.user);
 jsonfile.writeFileSync(file, data);
