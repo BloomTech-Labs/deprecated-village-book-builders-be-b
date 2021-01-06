@@ -87,11 +87,11 @@ for (let index = 0; index < NUMOFHEADS; index++) {
   //Generate data
   let fakeHeadmaster = {
     id: index,
-    first_Name: faker.name.firstName(),
-    last_Name: faker.name.lastName(),
+    first_name: faker.name.firstName(),
+    last_name: faker.name.lastName(),
     gender: faker.random.arrayElement(genders),
     address: faker.address.streetAddress(),
-    GPS_coordinates: faker.address.nearbyGPSCoordinate(),
+    gps_coordinates: faker.address.nearbyGPSCoordinate(),
     images_drive_folder_link: faker.internet.url(),
     headmasters_picture: faker.image.imageUrl(),
     education_contact: {
@@ -220,19 +220,19 @@ const fakeUsers = [
     id: 8,
     email: "mentees@mentees.com",
     password: "password",
-    role: "mentees",
+    role: "mentee",
   },
   {
     id: 9,
     email: "varun@vbb.com",
     password: "password",
-    role: "mentees",
+    role: "mentee",
   },
   {
     id: 10,
     email: faker.internet.email(),
     password: "password",
-    role: "mentees",
+    role: "mentee",
   },
 ];
 data.user = fakeUsers;

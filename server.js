@@ -51,8 +51,8 @@ function getUserData({ email, password }) {
 
 // Register New User
 server.post("/auth/register", (req, res) => {
-  console.log("register endpoint called; request body:");
-  console.log(req.body);
+  // console.log("register endpoint called; request body:");
+  // console.log(req.body);
   const { email, password } = req.body;
 
   if (isAuthenticated({ email, password }) === true) {
@@ -95,14 +95,14 @@ server.post("/auth/register", (req, res) => {
 
   // Create token for new user
   const access_token = createToken({ email, password });
-  console.log("Access Token:" + access_token);
+  // console.log("Access Token:" + access_token);
   res.status(200).json({ access_token });
 });
 
 // Login to one of the user from ./user.json
 server.post("/auth/login", (req, res) => {
-  console.log("login endpoint called; request body:");
-  console.log(req.body);
+  // console.log("login endpoint called; request body:");
+  // console.log(req.body);
   const { email, password } = req.body;
   if (isAuthenticated({ email, password }) === false) {
     const status = 401;
@@ -116,7 +116,7 @@ server.post("/auth/login", (req, res) => {
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
-    console.log(req.headers.authorization)
+    // console.log(req.headers.authorization)
     if (req.headers.authorization === undefined
     ) {
       const status = 401;
@@ -126,7 +126,7 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     }
     try {
       let verifyTokenResult;
-      console.log(req.headers.authorization);
+      // console.log(req.headers.authorization);
       verifyTokenResult = verifyToken(req.headers.authorization);
   
       if (verifyTokenResult instanceof Error) {
