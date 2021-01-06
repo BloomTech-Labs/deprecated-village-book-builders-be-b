@@ -1,4 +1,4 @@
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server-relationship");
@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken");
 
 const server = jsonServer.create();
 const userdb = JSON.parse(fs.readFileSync("./db.json", "UTF-8"));
-const router = jsonServer.router("./db.json");
+const path = require('path')
+const router = jsonServer.router(path.join(__dirname, 'db.json'))
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -14,7 +15,7 @@ server.use(jsonServer.defaults());
 
 const SECRET_KEY = "123456789";
 
-const expiresIn = "1h";
+const expiresIn = "24h";
 
 // Create a token from a payload
 function createToken(payload) {
@@ -146,4 +147,4 @@ server.use(router);
 
 
 
-server.listen(port, () => console.log(`\n** Running on port ${port} **\t http://localhost:3000/\n`));
+server.listen(port, () => console.log(`\n** Running on port ${port} **\t http://localhost:${port}/\n`));

@@ -6,7 +6,7 @@ const LANGUAGES = require("./language.js");
 let data = jsonfile.readFileSync(file);
 data = {};
 
-const NUMOFLIBS = 30;
+const NUMOFLIBS = 10;
 const NUMOFHEADS = NUMOFLIBS * 2;
 let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Not Disclosed"];
@@ -106,18 +106,18 @@ for (let index = 0; index < NUMOFHEADS; index++) {
 }
 
 //menteess-----------------------------------------------------
-data.mentees = [];
+data.mentee = [];
 for (let index = 0; index < NUMOFMENTEES; index++) {
   //Generate data
   let fakeMentees = {
     id: index,
-    first_Name: faker.name.firstName(),
-    last_Name: faker.name.lastName(),
+    first_name: faker.name.firstName(),
+    last_name: faker.name.lastName(),
     gender: genders[faker.random.number(genders.length - 1)],
     email: faker.internet.email(),
     primary_language: faker.random.arrayElement(LANGUAGES).name,
     dob: faker.date.past(15, "1999-07-09"),
-    menteess_picture: faker.image.imageUrl(),
+    mentee_picture: faker.image.imageUrl(),
     english_lvl: faker.random.number(10),
     math_lvl: faker.random.number(13),
     reading_lvl: faker.random.number(13),
@@ -143,7 +143,7 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     ],
   };
 
-  data.mentees.push(fakeMentees);
+  data.mentee.push(fakeMentees);
 }
 
 //Releationships-----------------------------------------------------
@@ -246,5 +246,5 @@ data.user = fakeUsers;
 // );
 // console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
 // console.log(data.mentees[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
-console.log(data.user);
+// console.log(data.user);
 jsonfile.writeFileSync(file, data);
