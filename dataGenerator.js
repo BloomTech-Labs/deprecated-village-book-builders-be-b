@@ -20,6 +20,7 @@ const apps = [
   "facebook",
   "twitter",
 ];
+const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"]
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -113,7 +114,7 @@ for (let index = 0; index < NUMOFTEACHERS; index++) {
     id: index,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
-    account_status: faker.random.boolean(),
+    account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
     gender: faker.random.arrayElement(genders),
     address: faker.address.streetAddress(),
     teachers_picture: faker.image.imageUrl(),
