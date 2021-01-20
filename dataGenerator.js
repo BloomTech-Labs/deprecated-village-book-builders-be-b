@@ -222,7 +222,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 
 // Randomly assign remaining headmasters to relevant objects
 for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
-  let randomVillage = faker.random.number(NUMOFLIBS);
+  let randomVillage = faker.random.number(NUMOFLIBS - 1);
   //headmaster
   data.headmaster[index].libraryId = randomVillage;
   //Village - Schools - Librarys
@@ -233,7 +233,7 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
 
 // Randomly assign remaining tachers to relevant schools
 for (let index = NUMOFLIBS; index < data.teacher.length; index++) {
-  let randomVillage = faker.random.number(NUMOFLIBS);
+  let randomVillage = faker.random.number(NUMOFLIBS - 1);
   //teacher
   data.teacher[index].schoolId = randomVillage;
   //Village - Schools - Librarys
