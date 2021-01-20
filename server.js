@@ -1,53 +1,22 @@
 const port = process.env.PORT || 5000;
 const fs = require("fs");
+
+const {
+  createToken,
+  verifyToken,
+  isAuthenticated,
+} = require("./controllers.js");
+
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server-relationship");
-const jwt = require("jsonwebtoken");
 
 const server = jsonServer.create();
-const userdb = JSON.parse(fs.readFileSync("./db.json", "UTF-8"));
-const path = require('path')
-const router = jsonServer.router(path.join(__dirname, 'db.json'))
+const path = require("path");
+const router = jsonServer.router(path.join(__dirname, "db.json"));
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
-
-const SECRET_KEY = "123456789";
-
-const expiresIn = "24h";
-
-// Create a token from a payload
-function createToken(payload) {
-  payload = getUserData(payload)
-  return jwt.sign(payload, SECRET_KEY, { expiresIn });
-}
-
-// Verify the token
-function verifyToken(token) {
-  return jwt.verify(token, SECRET_KEY, (err, decode) =>
-    decode !== undefined ? decode : err
-  );
-}
-
-// Check if the user exists in database
-function isAuthenticated({ email, password }) {
-  return (
-    userdb.user.findIndex(
-      (user) => user.email === email && user.password === password
-    ) !== -1
-    
-  );
-}
-
-// Retrieve User Id and role to send in JWT
-function getUserData({ email, password }) {
-  const { id, role} = userdb.user[userdb.user.findIndex(
-    (user) => user.email === email && user.password === password
-  )]
-  return { id, role }
-}
-
 
 // Register New User
 server.post("/auth/register", (req, res) => {
@@ -116,35 +85,36 @@ server.post("/auth/login", (req, res) => {
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
-    // console.log(req.headers.authorization)
-    if (req.headers.authorization === undefined
-    ) {
+  // console.log(req.headers.authorization)
+  if (req.headers.authorization === undefined) {
+    const status = 401;
+    const message = "Error in authorization format";
+    res.status(status).json({ status, message, headers: req.headers });
+    return;
+  }
+  try {
+    let verifyTokenResult;
+    // console.log(req.headers.authorization);
+    verifyTokenResult = verifyToken(req.headers.authorization);
+
+    if (verifyTokenResult instanceof Error) {
       const status = 401;
-      const message = "Error in authorization format";
-      res.status(status).json({ status, message, headers: req.headers });
+      const message = "Access token not provided";
+      res
+        .status(status)
+        .json({ status, message, token: req.headers.authorization });
       return;
     }
-    try {
-      let verifyTokenResult;
-      // console.log(req.headers.authorization);
-      verifyTokenResult = verifyToken(req.headers.authorization);
-  
-      if (verifyTokenResult instanceof Error) {
-        const status = 401;
-        const message = "Access token not provided";
-        res.status(status).json({ status, message, token: req.headers.authorization });
-        return;
-      }
-      next();
-    } catch (err) {
-      const status = 401;
-      const message = "Error access_token is revoked";
-      res.status(status).json({ status, message });
-    }
-  });
+    next();
+  } catch (err) {
+    const status = 401;
+    const message = "Error access_token is revoked";
+    res.status(status).json({ status, message });
+  }
+});
 
 server.use(router);
 
-
-
-server.listen(port, () => console.log(`\n** Running on port ${port} **\t http://localhost:${port}/\n`));
+server.listen(port, () =>
+  console.log(`\n** Running on port ${port} **\t http://localhost:${port}/\n`)
+);
