@@ -8,6 +8,7 @@ data = {};
 
 const NUMOFLIBS = 10;
 const NUMOFHEADS = NUMOFLIBS * 2;
+const NUMOFTEACHERS = NUMOFLIBS * 2;
 let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
 const apps = [
@@ -19,6 +20,7 @@ const apps = [
   "facebook",
   "twitter",
 ];
+const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"]
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -33,7 +35,6 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     image: faker.image.imageUrl(600, 600),
     headmasterId: [],
   };
-
   data.library.push(fakeLib);
 }
 
@@ -50,7 +51,6 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     notes: faker.random.words(50),
     headmasterId: [],
   };
-
   data.village.push(fakeVillage);
 }
 
@@ -64,13 +64,14 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     id: index,
     name: faker.company.companyName(),
     count_menteess_currently_enrolled: faker.random.number(schoolmenteess),
-    count_teachers: faker.random.number(NUMOFHEADS) + 4,
+    count_teachers: 0,
     school_description: faker.random.words(30),
     school_needs: faker.random.words(30),
     school_goals: faker.random.words(30),
     dynamic_questions: [],
     notes: faker.random.words(30),
     headmasterId: [],
+    teacherId: []
   };
 
   for (let x = 0; x < 3; x++) {
@@ -105,7 +106,30 @@ for (let index = 0; index < NUMOFHEADS; index++) {
   data.headmaster.push(fakeHeadmaster);
 }
 
-//menteess-----------------------------------------------------
+//Teachers-----------------------------------------------------
+data.teacher = [];
+for (let index = 0; index < NUMOFTEACHERS; index++) {
+  //Generate data
+  let fakeTeacher = {
+    id: index,
+    first_name: faker.name.firstName(),
+    last_name: faker.name.lastName(),
+    account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
+    gender: faker.random.arrayElement(genders),
+    address: faker.address.streetAddress(),
+    teachers_picture: faker.image.imageUrl(),
+    education_contact: {
+      name: faker.name.findName(),
+      phone: faker.phone.phoneNumberFormat(2),
+      email: faker.internet.email(),
+      jobTitle: faker.name.jobTitle(),
+    },
+    notes: faker.random.words(50),
+  };
+  data.teacher.push(fakeTeacher);
+}
+
+//Mentees-----------------------------------------------------
 data.mentee = [];
 for (let index = 0; index < NUMOFMENTEES; index++) {
   //Generate data
@@ -113,6 +137,7 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     id: index,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
+    account_status: faker.random.boolean(),
     gender: genders[faker.random.number(genders.length - 1)],
     email: faker.internet.email(),
     primary_language: faker.random.arrayElement(LANGUAGES).name,
@@ -142,11 +167,10 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
       { qId: 8, question: "Admin Notes", answer: faker.hacker.phrase() },
     ],
   };
-
   data.mentee.push(fakeMentees);
 }
 
-//Releationships-----------------------------------------------------
+//Relationships-----------------------------------------------------
 //-----------------------------------------------------
 //-----------------------------------------------------
 //-----------------------------------------------------
@@ -175,9 +199,18 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   data.library[index].headmasterId.push(index);
 }
 
+//teachers
+for (let index = 0; index < NUMOFLIBS; index++) {
+  //teacher
+  data.teacher[index].schoolId = index;
+  //Schools
+  data.school[index].teacherId.push(index)
+  data.school[index].count_teachers += 1
+}
+
+// Randomly assign remaining headmasters to relevant objects
 for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
   let randomVillage = faker.random.number(NUMOFLIBS);
-  randomVillage -= 1 ? randomVillage != 0 : (randomVillage = randomVillage);
   //headmaster
   data.headmaster[index].libraryId = randomVillage;
   //Village - Schools - Librarys
@@ -186,8 +219,17 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
   data.library[randomVillage].headmasterId.push(index);
 }
 
-//Users-----------------------------------------------------
+// Randomly assign remaining tachers to relevant schools
+for (let index = NUMOFLIBS; index < data.teacher.length; index++) {
+  let randomVillage = faker.random.number(NUMOFLIBS);
+  //teacher
+  data.teacher[index].schoolId = randomVillage;
+  //Village - Schools - Librarys
+  data.school[randomVillage].teacherId.push(index);
+  data.school[randomVillage].count_teachers += 1;
+}
 
+//Users-----------------------------------------------------
 const fakeUsers = [
   { id: 0, email: "admin@admin.com", password: "password", role: "admin" },
   { id: 2, email: "bruno@email.com", password: "password", role: "admin" },
@@ -235,16 +277,6 @@ const fakeUsers = [
     role: "mentee",
   },
 ];
+
 data.user = fakeUsers;
-//Debbuging print statements-----------------------------------------------------
-// console.log(data.library, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(data.village, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(
-//   data.school,
-//   data.school[0].dynamic_questions,
-//   "\n\n\n\n\n\n\n\n\n\n\n"
-// );
-// console.log(data.headmaster, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(data.mentees[0].primary_language, "\n\n\n\n\n\n\n\n\n\n\n");
-// console.log(data.user);
 jsonfile.writeFileSync(file, data);
