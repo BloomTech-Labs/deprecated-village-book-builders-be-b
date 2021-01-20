@@ -11,16 +11,8 @@ const NUMOFHEADS = NUMOFLIBS * 2;
 const NUMOFTEACHERS = NUMOFLIBS * 2;
 let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
-const apps = [
-  "phone",
-  "email",
-  "mail",
-  "wechat",
-  "duo",
-  "facebook",
-  "twitter",
-];
-const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"]
+const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
+const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -71,7 +63,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     dynamic_questions: [],
     notes: faker.random.words(30),
     headmasterId: [],
-    teacherId: []
+    teacherId: [],
   };
 
   for (let x = 0; x < 3; x++) {
@@ -156,11 +148,31 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
       methods: faker.random.arrayElements(apps, 3),
     },
     dynamic_questions: [
-      { qId: 0, question: "My favorite thing to do in my free time is", answer: faker.hacker.phrase() },
-      { qId: 1, question: "When I grow up, I want to be", answer: faker.hacker.phrase() },
-      { qId: 2, question: "Goals & Dreams Notes", answer: faker.hacker.phrase() },
-      { qId: 3, question: "Personal Struggles Notes", answer: faker.hacker.phrase() },
-      { qId: 4, question: "Other interests/hobbies", answer: faker.hacker.phrase() },
+      {
+        qId: 0,
+        question: "My favorite thing to do in my free time is",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 1,
+        question: "When I grow up, I want to be",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 2,
+        question: "Goals & Dreams Notes",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 3,
+        question: "Personal Struggles Notes",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 4,
+        question: "Other interests/hobbies",
+        answer: faker.hacker.phrase(),
+      },
       { qId: 5, question: "Skills Notes", answer: faker.hacker.phrase() },
       { qId: 6, question: "Family Notes", answer: faker.hacker.phrase() },
       { qId: 7, question: "Other Notes", answer: faker.hacker.phrase() },
@@ -204,8 +216,8 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   //teacher
   data.teacher[index].schoolId = index;
   //Schools
-  data.school[index].teacherId.push(index)
-  data.school[index].count_teachers += 1
+  data.school[index].teacherId.push(index);
+  data.school[index].count_teachers += 1;
 }
 
 // Randomly assign remaining headmasters to relevant objects
@@ -275,6 +287,12 @@ const fakeUsers = [
     email: faker.internet.email(),
     password: "password",
     role: "mentee",
+  },
+  {
+    id: 11,
+    email: "teacher@teacher.com",
+    password: "password",
+    role: "teacher",
   },
 ];
 
