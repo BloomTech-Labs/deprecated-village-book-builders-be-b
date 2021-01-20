@@ -10,15 +10,7 @@ const NUMOFLIBS = 10;
 const NUMOFHEADS = NUMOFLIBS * 2;
 let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
-const apps = [
-  "phone",
-  "email",
-  "mail",
-  "wechat",
-  "duo",
-  "facebook",
-  "twitter",
-];
+const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -131,11 +123,31 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
       methods: faker.random.arrayElements(apps, 3),
     },
     dynamic_questions: [
-      { qId: 0, question: "My favorite thing to do in my free time is", answer: faker.hacker.phrase() },
-      { qId: 1, question: "When I grow up, I want to be", answer: faker.hacker.phrase() },
-      { qId: 2, question: "Goals & Dreams Notes", answer: faker.hacker.phrase() },
-      { qId: 3, question: "Personal Struggles Notes", answer: faker.hacker.phrase() },
-      { qId: 4, question: "Other interests/hobbies", answer: faker.hacker.phrase() },
+      {
+        qId: 0,
+        question: "My favorite thing to do in my free time is",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 1,
+        question: "When I grow up, I want to be",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 2,
+        question: "Goals & Dreams Notes",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 3,
+        question: "Personal Struggles Notes",
+        answer: faker.hacker.phrase(),
+      },
+      {
+        qId: 4,
+        question: "Other interests/hobbies",
+        answer: faker.hacker.phrase(),
+      },
       { qId: 5, question: "Skills Notes", answer: faker.hacker.phrase() },
       { qId: 6, question: "Family Notes", answer: faker.hacker.phrase() },
       { qId: 7, question: "Other Notes", answer: faker.hacker.phrase() },
@@ -233,6 +245,12 @@ const fakeUsers = [
     email: faker.internet.email(),
     password: "password",
     role: "mentee",
+  },
+  {
+    id: 11,
+    email: "teacher@teacher.com",
+    password: "password",
+    role: "teacher",
   },
 ];
 data.user = fakeUsers;
