@@ -70,7 +70,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     dynamic_questions: [],
     notes: faker.random.words(30),
     headmasterId: [],
-    teacherID: []
+    teacherId: []
   };
 
   for (let x = 0; x < 3; x++) {
@@ -136,6 +136,7 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     id: index,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
+    account_status: faker.random.boolean(),
     gender: genders[faker.random.number(genders.length - 1)],
     email: faker.internet.email(),
     primary_language: faker.random.arrayElement(LANGUAGES).name,
@@ -165,7 +166,6 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
       { qId: 8, question: "Admin Notes", answer: faker.hacker.phrase() },
     ],
   };
-
   data.mentee.push(fakeMentees);
 }
 
@@ -207,7 +207,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   data.school[index].count_teachers += 1
 }
 
-//Randomly assign remaining headmasters to villages, schools, and libraries
+// Randomly assign remaining headmasters to relevant objects
 for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
   let randomVillage = faker.random.number(NUMOFLIBS);
   //headmaster
@@ -218,7 +218,7 @@ for (let index = NUMOFLIBS; index < data.headmaster.length; index++) {
   data.library[randomVillage].headmasterId.push(index);
 }
 
-//Randomly assign remaining teachers to schools.
+// Randomly assign remaining tachers to relevant schools
 for (let index = NUMOFLIBS; index < data.teacher.length; index++) {
   let randomVillage = faker.random.number(NUMOFLIBS);
   //teacher
@@ -229,7 +229,6 @@ for (let index = NUMOFLIBS; index < data.teacher.length; index++) {
 }
 
 //Users-----------------------------------------------------
-
 const fakeUsers = [
   { id: 0, email: "admin@admin.com", password: "password", role: "admin" },
   { id: 2, email: "bruno@email.com", password: "password", role: "admin" },
