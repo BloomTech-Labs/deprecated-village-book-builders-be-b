@@ -11,20 +11,8 @@ const NUMOFHEADS = NUMOFLIBS * 2;
 const NUMOFTEACHERS = NUMOFLIBS * 2;
 let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
-<<<<<<< HEAD
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
-=======
-const apps = [
-  "phone",
-  "email",
-  "mail",
-  "wechat",
-  "duo",
-  "facebook",
-  "twitter",
-];
-const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"]
->>>>>>> 4cb1179b8299b4a152984f3ca4c4313a648eabec
+const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -75,7 +63,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
     dynamic_questions: [],
     notes: faker.random.words(30),
     headmasterId: [],
-    teacherId: []
+    teacherId: [],
   };
 
   for (let x = 0; x < 3; x++) {
@@ -228,8 +216,8 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   //teacher
   data.teacher[index].schoolId = index;
   //Schools
-  data.school[index].teacherId.push(index)
-  data.school[index].count_teachers += 1
+  data.school[index].teacherId.push(index);
+  data.school[index].count_teachers += 1;
 }
 
 // Randomly assign remaining headmasters to relevant objects
