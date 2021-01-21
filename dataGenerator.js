@@ -294,6 +294,12 @@ const fakeUsers = [
     password: "password",
     role: "teacher",
   },
+  {
+    id: 12,
+    email: "program@program.com",
+    password: "password",
+    role: "program"
+  }
 ];
 
 data.user = fakeUsers;
