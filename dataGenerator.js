@@ -182,6 +182,19 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
   data.mentee.push(fakeMentees);
 }
 
+//Programs-----------------------------------------------------
+data.program = [];
+for (let index = 0; index < NUMOFLIBS; index++) {
+  //Generate data
+  let fakeProg = {
+    id: index,
+    name: faker.address.city(),
+    location: faker.address.nearbyGPSCoordinate()
+  };
+  data.program.push(fakeProg);
+}
+
+
 //Relationships-----------------------------------------------------
 //-----------------------------------------------------
 //-----------------------------------------------------
@@ -218,6 +231,11 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   //Schools
   data.school[index].teacherId.push(index);
   data.school[index].count_teachers += 1;
+}
+
+//programs
+for (let index = 0; index < data.program.length; index++) {
+  data.program[index].libraryId = index
 }
 
 // Randomly assign remaining headmasters to relevant objects
@@ -294,6 +312,12 @@ const fakeUsers = [
     password: "password",
     role: "teacher",
   },
+  {
+    id: 12,
+    email: "program@program.com",
+    password: "password",
+    role: "program"
+  }
 ];
 
 data.user = fakeUsers;
