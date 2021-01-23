@@ -13,6 +13,8 @@ let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
+const SUBJECTS = ["English", "Science", "Math", "Theoretical Astroskiing"];
+const LANGUAGE = ["English", "Latin", "Spanish", "Sanskrit", "Sumerian"]
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -107,16 +109,15 @@ for (let index = 0; index < NUMOFTEACHERS; index++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
-    gender: faker.random.arrayElement(genders),
-    address: faker.address.streetAddress(),
-    teachers_picture: faker.image.imageUrl(),
-    education_contact: {
-      name: faker.name.findName(),
-      phone: faker.phone.phoneNumberFormat(2),
-      email: faker.internet.email(),
-      jobTitle: faker.name.jobTitle(),
-    },
-    notes: faker.random.words(50),
+    subjects: faker.random.arrayElements(SUBJECTS, 2),
+    city: faker.address.city(),
+    country: faker.address.country(),
+    time_zone: faker.address.timeZone(),
+    classrooms: faker.random.hexaDecimal(),   
+    phone: faker.phone.phoneNumberFormat(2),
+    email: faker.internet.email(),
+    first_language: faker.random.arrayElement(LANGUAGE),
+    other_language: faker.random.arrayElements(LANGUAGE, 2)
   };
   data.teacher.push(fakeTeacher);
 }

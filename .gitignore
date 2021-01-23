@@ -116,3 +116,7 @@ dist
 .pnp.*
 
 node_modules/
+
+#Project Files
+db.json
+db.bak.json
