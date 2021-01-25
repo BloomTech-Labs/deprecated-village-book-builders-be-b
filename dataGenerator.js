@@ -134,6 +134,7 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     id: index,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
+    mentee_picture: faker.image.imageUrl(),
     subjects: faker.random.arrayElements(SUBJECTS, 2),
     grade: faker.random.arrayElement(GRADES),
     email: faker.internet.email(),
