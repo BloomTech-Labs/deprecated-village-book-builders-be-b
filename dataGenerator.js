@@ -13,6 +13,8 @@ let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
+const SUBJECTS = ["English", "Science", "Math", "Theoretical Astroskiing"];
+const LANGUAGE = ["English", "Latin", "Spanish", "Sanskrit", "Sumerian"]
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -107,16 +109,15 @@ for (let index = 0; index < NUMOFTEACHERS; index++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
-    gender: faker.random.arrayElement(genders),
-    address: faker.address.streetAddress(),
-    teachers_picture: faker.image.imageUrl(),
-    education_contact: {
-      name: faker.name.findName(),
-      phone: faker.phone.phoneNumberFormat(2),
-      email: faker.internet.email(),
-      jobTitle: faker.name.jobTitle(),
-    },
-    notes: faker.random.words(50),
+    subjects: faker.random.arrayElements(SUBJECTS, 2),
+    city: faker.address.city(),
+    country: faker.address.country(),
+    time_zone: faker.address.timeZone(),
+    classrooms: faker.random.hexaDecimal(),   
+    phone: faker.phone.phoneNumberFormat(2),
+    email: faker.internet.email(),
+    first_language: faker.random.arrayElement(LANGUAGE),
+    other_language: faker.random.arrayElements(LANGUAGE, 2)
   };
   data.teacher.push(fakeTeacher);
 }
@@ -182,6 +183,19 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
   data.mentee.push(fakeMentees);
 }
 
+//Programs-----------------------------------------------------
+data.program = [];
+for (let index = 0; index < NUMOFLIBS; index++) {
+  //Generate data
+  let fakeProg = {
+    id: index,
+    name: faker.address.city(),
+    location: faker.address.nearbyGPSCoordinate()
+  };
+  data.program.push(fakeProg);
+}
+
+
 //Relationships-----------------------------------------------------
 //-----------------------------------------------------
 //-----------------------------------------------------
@@ -218,6 +232,11 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   //Schools
   data.school[index].teacherId.push(index);
   data.school[index].count_teachers += 1;
+}
+
+//programs
+for (let index = 0; index < data.program.length; index++) {
+  data.program[index].libraryId = index
 }
 
 // Randomly assign remaining headmasters to relevant objects
@@ -294,6 +313,12 @@ const fakeUsers = [
     password: "password",
     role: "teacher",
   },
+  {
+    id: 12,
+    email: "program@program.com",
+    password: "password",
+    role: "program"
+  }
 ];
 
 data.user = fakeUsers;
