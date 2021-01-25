@@ -14,7 +14,11 @@ const genders = ["Male", "Female", "Other"];
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
 const SUBJECTS = ["English", "Science", "Math", "Theoretical Astroskiing"];
-const LANGUAGE = ["English", "Latin", "Spanish", "Sanskrit", "Sumerian"]
+const LANGUAGE = ["English", "Latin", "Spanish", "Sanskrit", "Sumerian"];
+const GRADES = ["Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"]
+const COUNTRIES = ["Belize", "Ghana", "Mexico", "Nepal", "Peru"];
+const TIME_ZONES = ["Central Standard Time", "Greenwich Mean Time", "Nepal Standard Time", "Peru Standard Time"];
+
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -130,55 +134,16 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     id: index,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
-    account_status: faker.random.boolean(),
-    gender: genders[faker.random.number(genders.length - 1)],
+    subjects: faker.random.arrayElements(SUBJECTS, 2),
+    grade: faker.random.arrayElement(GRADES),
     email: faker.internet.email(),
-    primary_language: faker.random.arrayElement(LANGUAGES).name,
     dob: faker.date.past(15, "1999-07-09"),
-    mentee_picture: faker.image.imageUrl(),
-    english_lvl: faker.random.number(10),
-    math_lvl: faker.random.number(13),
-    reading_lvl: faker.random.number(13),
-    school_lvl: faker.random.number(13),
-    academic_description: faker.random.words(20),
-    support_needed: faker.random.words(35),
-    availability: {
-      time_zone: faker.address.timeZone(),
-      as_early_as: faker.fake("{{random.number(24)}}:00"),
-      as_late_as: faker.fake("{{random.number(24)}}:00"),
-      methods: faker.random.arrayElements(apps, 3),
-    },
-    dynamic_questions: [
-      {
-        qId: 0,
-        question: "My favorite thing to do in my free time is",
-        answer: faker.hacker.phrase(),
-      },
-      {
-        qId: 1,
-        question: "When I grow up, I want to be",
-        answer: faker.hacker.phrase(),
-      },
-      {
-        qId: 2,
-        question: "Goals & Dreams Notes",
-        answer: faker.hacker.phrase(),
-      },
-      {
-        qId: 3,
-        question: "Personal Struggles Notes",
-        answer: faker.hacker.phrase(),
-      },
-      {
-        qId: 4,
-        question: "Other interests/hobbies",
-        answer: faker.hacker.phrase(),
-      },
-      { qId: 5, question: "Skills Notes", answer: faker.hacker.phrase() },
-      { qId: 6, question: "Family Notes", answer: faker.hacker.phrase() },
-      { qId: 7, question: "Other Notes", answer: faker.hacker.phrase() },
-      { qId: 8, question: "Admin Notes", answer: faker.hacker.phrase() },
-    ],
+    home_country: faker.random.arrayElement(COUNTRIES),
+    home_time_zone: faker.random.arrayElement(TIME_ZONES),
+    phone: faker.phone.phoneNumberFormat(2),
+    first_language: faker.random.arrayElement(LANGUAGE),
+    other_fluent_languages: faker.random.arrayElements(LANGUAGE, 2), 
+    account_status: faker.random.arrayElement(ACCOUNT_STATUSES)
   };
   data.mentee.push(fakeMentees);
 }
