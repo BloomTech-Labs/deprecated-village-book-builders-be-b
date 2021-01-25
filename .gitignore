@@ -117,6 +117,6 @@ dist
 
 node_modules/
 
-# databasefiles
+#Project Files
 db.json
 db.bak.json
