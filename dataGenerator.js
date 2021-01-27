@@ -144,7 +144,9 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     phone: faker.phone.phoneNumberFormat(2),
     first_language: faker.random.arrayElement(LANGUAGE),
     other_fluent_languages: faker.random.arrayElements(LANGUAGE, 2), 
-    account_status: faker.random.arrayElement(ACCOUNT_STATUSES)
+    account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
+    mentor_assignment: "",
+    mentoring_time_slot: ""
   };
   data.mentee.push(fakeMentees);
 }
