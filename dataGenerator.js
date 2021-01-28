@@ -1,3 +1,4 @@
+const { fake } = require("faker");
 const faker = require("faker");
 const jsonfile = require("jsonfile");
 
@@ -13,8 +14,8 @@ let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
-const SUBJECTS = ["English", "Science", "Math", "Theoretical Astroskiing"];
-const LANGUAGE = ["English", "Latin", "Spanish", "Sanskrit", "Sumerian"];
+const SUBJECTS = ["English", "Science", "Math", "Reading"];
+const LANGUAGE = ["English", "Spanish", "Vietnamese", "Cantonese", "Mandarin", "Tagalog"];
 const GRADES = ["Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"]
 const COUNTRIES = ["Belize", "Ghana", "Mexico", "Nepal", "Peru"];
 const TIME_ZONES = ["Central Standard Time", "Greenwich Mean Time", "Nepal Standard Time", "Peru Standard Time"];
@@ -134,19 +135,58 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     id: index,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
-    mentee_picture: faker.image.imageUrl(),
     subjects: faker.random.arrayElements(SUBJECTS, 2),
     grade: faker.random.arrayElement(GRADES),
-    email: faker.internet.email(),
     dob: faker.date.past(15, "1999-07-09"),
-    home_country: faker.random.arrayElement(COUNTRIES),
-    home_time_zone: faker.random.arrayElement(TIME_ZONES),
+    home_country: faker.address.country(),
+    home_time_zone: faker.address.timeZone(),
     phone: faker.phone.phoneNumberFormat(2),
+    email: faker.internet.email(),
     first_language: faker.random.arrayElement(LANGUAGE),
-    other_fluent_languages: faker.random.arrayElements(LANGUAGE, 2), 
+    other_fluent_languages: faker.random.arrayElements(LANGUAGE, 2),
+    english_proficiency: faker.random.number(13),
+    school_level: faker.random.number(13),
+    reading_level:  faker.random.number(13),
+    math_level: faker.random.number(13),
+    academic_description: faker.random.words(50),
+    support_needed: faker.random.words(50),
+    general_availability: {
+      time_zone: faker.address.timeZone(),
+      as_early_as: faker.fake("{{random.number(24)}}:00"),
+      as_late_as: faker.fake("{{random.number(24)}}:00"),
+      methods: faker.random.arrayElements(apps, 3),
+    },
+    dynamic_questions: [
+      { qId: 0, question: "My favorite thing to do in my free time is:", answer: faker.hacker.phrase() },
+      { qId: 1, question: "When I grow up, I want to be:", answer: faker.hacker.phrase() },
+      { qId: 2, question: "Goals & Dreams Notes:", answer: faker.hacker.phrase() },
+      { qId: 3, question: "Personal Struggles Notes:", answer: faker.hacker.phrase() },
+      { qId: 4, question: "Other interests/hobbies", answer: faker.hacker.phrase() },
+      { qId: 5, question: "Skills Notes:", answer: faker.hacker.phrase() },
+      { qId: 6, question: "Family Notes:", answer: faker.hacker.phrase() },
+      { qId: 7, question: "Other Notes:", answer: faker.hacker.phrase() },
+      { qId: 8, question: "Admin Notes:", answer: faker.hacker.phrase() },
+    ],
+    parent_1: { 
+      first_name: faker.name.firstName(), 
+      last_name: faker.name.lastName(), 
+      contact_info: { 
+        email: faker.internet.email(), 
+        phone: faker.phone.phoneNumberFormat(2) 
+      } 
+    },
+    parent_2: { 
+      first_name: faker.name.firstName(), 
+      last_name: faker.name.lastName(), 
+      contact_info: { 
+        email: faker.internet.email(), 
+        phone: faker.phone.phoneNumberFormat(2) 
+      } 
+    },
+    mentee_picture: faker.image.imageUrl(),
     account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
     mentor_assignment: "",
-    mentoring_time_slot: ""
+    mentoring_time_slot: null
   };
   data.mentee.push(fakeMentees);
 }
