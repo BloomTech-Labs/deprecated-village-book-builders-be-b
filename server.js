@@ -1,5 +1,6 @@
 const port = process.env.PORT || 5000;
 const fs = require("fs");
+const cors = require("cors");
 
 const {
   createToken,
@@ -114,6 +115,7 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
 });
 
 server.use(router);
+server.use(cors());
 
 server.listen(port, () =>
   console.log(`\n** Running on port ${port} **\t http://localhost:${port}/\n`)

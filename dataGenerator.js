@@ -142,6 +142,7 @@ for (let index = 0; index < NUMOFMENTOR; index++) {
     email: faker.internet.email(),
     first_language: faker.random.arrayElement(LANGUAGE),
     other_language: faker.random.arrayElements(LANGUAGE, 2),
+    mentee: 1,
   };
   data.mentor.push(fakeMentor);
 }
