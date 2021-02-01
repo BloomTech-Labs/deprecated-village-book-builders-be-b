@@ -151,37 +151,38 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     academic_description: faker.random.words(50),
     support_needed: faker.random.words(50),
     general_availability: {
+      key: 1,
       time_zone: faker.address.timeZone(),
       as_early_as: faker.fake("{{random.number(24)}}:00"),
       as_late_as: faker.fake("{{random.number(24)}}:00"),
       methods: faker.random.arrayElements(apps, 3),
     },
-    dynamic_questions: [
+    bio_questions: [
       { qId: 0, question: "My favorite thing to do in my free time is:", answer: faker.hacker.phrase() },
       { qId: 1, question: "When I grow up, I want to be:", answer: faker.hacker.phrase() },
-      { qId: 2, question: "Goals & Dreams Notes:", answer: faker.hacker.phrase() },
-      { qId: 3, question: "Personal Struggles Notes:", answer: faker.hacker.phrase() },
-      { qId: 4, question: "Other interests/hobbies", answer: faker.hacker.phrase() },
-      { qId: 5, question: "Skills Notes:", answer: faker.hacker.phrase() },
-      { qId: 6, question: "Family Notes:", answer: faker.hacker.phrase() },
-      { qId: 7, question: "Other Notes:", answer: faker.hacker.phrase() },
-      { qId: 8, question: "Admin Notes:", answer: faker.hacker.phrase() },
+      { qId: 2, question: "Goals & Dreams:", answer: faker.hacker.phrase() },
+      { qId: 3, question: "Personal Struggles:", answer: faker.hacker.phrase() },
+      { qId: 4, question: "Other Interests:", answer: faker.hacker.phrase() },
     ],
-    parent_1: { 
+    admin_notes: [
+      { qId: 1, question: "Skills Notes:", answer: faker.hacker.phrase() },
+      { qId: 2, question: "Family Notes:", answer: faker.hacker.phrase() },
+      { qId: 3, question: "Other Notes:", answer: faker.hacker.phrase() },
+      { qId: 4, question: "Admin Notes:", answer: faker.hacker.phrase() },
+    ],
+    parent_1: {
+      key: 1, 
       first_name: faker.name.firstName(), 
       last_name: faker.name.lastName(), 
-      contact_info: { 
-        email: faker.internet.email(), 
-        phone: faker.phone.phoneNumberFormat(2) 
-      } 
+      email: faker.internet.email(), 
+      phone: faker.phone.phoneNumberFormat(2) 
     },
-    parent_2: { 
+    parent_2: {
+      key: 2,
       first_name: faker.name.firstName(), 
       last_name: faker.name.lastName(), 
-      contact_info: { 
-        email: faker.internet.email(), 
-        phone: faker.phone.phoneNumberFormat(2) 
-      } 
+      email: faker.internet.email(), 
+      phone: faker.phone.phoneNumberFormat(2) 
     },
     mentee_picture: faker.image.imageUrl(),
     account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
