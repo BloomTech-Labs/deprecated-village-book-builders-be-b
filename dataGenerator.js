@@ -153,8 +153,8 @@ for (let index = 0; index < NUMOFMENTEES; index++) {
     general_availability: {
       key: 1,
       time_zone: faker.address.timeZone(),
-      as_early_as: faker.fake("{{random.number(24)}}:00"),
-      as_late_as: faker.fake("{{random.number(24)}}:00"),
+      as_early_as: faker.fake("{{random.number(12)}}:00"),
+      as_late_as: faker.fake("{{random.number(23)}}:00"),
       methods: faker.random.arrayElements(apps, 3),
     },
     bio_questions: [
