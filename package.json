@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.19.0",
+    "cors": "^2.8.5",
     "faker": "5.1.0",
     "json-server-relationship": "0.14.5",
     "jsonfile": "6.1.0",

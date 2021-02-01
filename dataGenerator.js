@@ -8,18 +8,19 @@ let data = jsonfile.readFileSync(file);
 data = {};
 
 const NUMOFLIBS = 10;
+const NUMOFMENTOR = NUMOFLIBS * 2;
 const NUMOFHEADS = NUMOFLIBS * 2;
 const NUMOFTEACHERS = NUMOFLIBS * 2;
 let NUMOFMENTEES = 0;
 const genders = ["Male", "Female", "Other"];
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
+
 const SUBJECTS = ["English", "Science", "Math", "Reading"];
 const LANGUAGE = ["English", "Spanish", "Vietnamese", "Cantonese", "Mandarin", "Tagalog"];
 const GRADES = ["Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"]
 const COUNTRIES = ["Belize", "Ghana", "Mexico", "Nepal", "Peru"];
 const TIME_ZONES = ["Central Standard Time", "Greenwich Mean Time", "Nepal Standard Time", "Peru Standard Time"];
-
 
 //Librarys-----------------------------------------------------
 data.library = [];
@@ -118,13 +119,37 @@ for (let index = 0; index < NUMOFTEACHERS; index++) {
     city: faker.address.city(),
     country: faker.address.country(),
     time_zone: faker.address.timeZone(),
-    classrooms: faker.random.hexaDecimal(),   
+    classrooms: faker.random.hexaDecimal(),
     phone: faker.phone.phoneNumberFormat(2),
     email: faker.internet.email(),
     first_language: faker.random.arrayElement(LANGUAGE),
-    other_language: faker.random.arrayElements(LANGUAGE, 2)
+    other_language: faker.random.arrayElements(LANGUAGE, 2),
   };
   data.teacher.push(fakeTeacher);
+}
+
+// Mentor -----------------------------------------------------
+data.mentor = [];
+for (let index = 0; index < NUMOFMENTOR; index++) {
+  //Generate data
+  let fakeMentor = {
+    id: index,
+    first_name: faker.name.firstName(),
+    last_name: faker.name.lastName(),
+    account_status: faker.random.arrayElement(ACCOUNT_STATUSES),
+    subjects: faker.random.arrayElements(SUBJECTS, 2),
+    city: faker.address.city(),
+    country: faker.address.country(),
+    time_zone: faker.address.timeZone(),
+    classrooms: faker.random.hexaDecimal(),
+    time_slots: faker.date.future(),
+    phone: faker.phone.phoneNumberFormat(2),
+    email: faker.internet.email(),
+    first_language: faker.random.arrayElement(LANGUAGE),
+    other_language: faker.random.arrayElements(LANGUAGE, 2),
+    mentee: -1,
+  };
+  data.mentor.push(fakeMentor);
 }
 
 //Mentees-----------------------------------------------------
@@ -199,11 +224,10 @@ for (let index = 0; index < NUMOFLIBS; index++) {
   let fakeProg = {
     id: index,
     name: faker.address.city(),
-    location: faker.address.nearbyGPSCoordinate()
+    location: faker.address.nearbyGPSCoordinate(),
   };
   data.program.push(fakeProg);
 }
-
 
 //Relationships-----------------------------------------------------
 //-----------------------------------------------------
@@ -245,7 +269,7 @@ for (let index = 0; index < NUMOFLIBS; index++) {
 
 //programs
 for (let index = 0; index < data.program.length; index++) {
-  data.program[index].libraryId = index
+  data.program[index].libraryId = index;
 }
 
 // Randomly assign remaining headmasters to relevant objects
@@ -326,8 +350,8 @@ const fakeUsers = [
     id: 12,
     email: "program@program.com",
     password: "password",
-    role: "program"
-  }
+    role: "program",
+  },
 ];
 
 data.user = fakeUsers;

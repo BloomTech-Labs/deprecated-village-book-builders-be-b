@@ -5,7 +5,7 @@ const userdb = JSON.parse(fs.readFileSync("./db.json", "UTF-8"));
 const SECRET_KEY = "123456789";
 const expiresIn = "24h";
 
-// Retrieve User Id and role to send in JWT
+// Retrieve User Id and role
 const getUserData = ({ email, password }) => {
   const { id, role } = userdb.user[
     userdb.user.findIndex(
