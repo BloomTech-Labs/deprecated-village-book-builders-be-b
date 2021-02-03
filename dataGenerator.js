@@ -119,6 +119,7 @@ for (let index = 0; index < NUMOFTEACHERS; index++) {
     city: faker.address.city(),
     country: faker.address.country(),
     time_zone: faker.address.timeZone(),
+    highest_degree: faker.name.degree(),
     classrooms: faker.random.hexaDecimal(),
     phone: faker.phone.phoneNumberFormat(2),
     email: faker.internet.email(),
