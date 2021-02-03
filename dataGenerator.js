@@ -16,6 +16,7 @@ const genders = ["Male", "Female", "Other"];
 const apps = ["phone", "email", "mail", "wechat", "duo", "facebook", "twitter"];
 const ACCOUNT_STATUSES = ["Active", "Inactive", "Denied"];
 
+const degrees = ["Masters, Bachelor, Associate, Gradute"]
 const SUBJECTS = ["English", "Science", "Math", "Reading"];
 const LANGUAGE = ["English", "Spanish", "Vietnamese", "Cantonese", "Mandarin", "Tagalog"];
 const GRADES = ["Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"]
